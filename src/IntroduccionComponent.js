@@ -14,6 +14,14 @@ width:100vw;
     color:#fff;
     justify-content:center;
     align-items:center;
+    animation: .6s cortinaDos ease-in;
+   
+
+    @keyframes cortinaDos
+    {
+        0%{ -webkit-transform: translateY(200px); opacity:0;}
+        100%{ -webkit-transform: translateY(0px); opacity:1;}
+    }
     
 
 .titulo_vamos{
@@ -28,10 +36,10 @@ width:100vw;
 .contentIntroduccion{
     width:200px;
     height:300px;
-    margin-right:30px;
+    margin-right:40px;
 }
 .contenedorImg{
-    width:60vw;
+    width:670px;
     height:300px;
     margin:auto;
     display:flex;
@@ -44,18 +52,46 @@ width:100vw;
     padding-top:40px;  
 }
 
-.boton{
+boton{
     border: solid 2px #fff;
     display:block;
     width:170px;
     height:20px;
     text-align:center;
     padding:10px;
-    margin:auto;
     border-radius:5px;
-
-
+    cursor:pointer;
 }
+
+boton:hover{
+    -webkit-transition: all .2s ease-in;
+    background:#fff;
+    color: #2D353A;
+}
+
+.palilloIzquierdo{
+    animation: 1.5s palIzquierdo infinite ease-in-out;}
+    @keyframes palIzquierdo{
+        0%{-webkit-transform: skewX(0deg);}
+        50%{-webkit-transform: skewX(10deg);}
+        100%{-webkit-transform: skewX(0deg);}
+    }
+
+.palilloDerecho{
+    animation: 1.5s derIzquierdo infinite ease-in-out;}
+    @keyframes derIzquierdo{
+        0%{-webkit-transform: skewX(0deg);}
+        50%{-webkit-transform: skewX(-10deg);}
+        100%{-webkit-transform: skewX(0deg);}
+    }
+
+.trozoSushi{
+    animation: 1.5s sushi infinite ease-in-out;}
+        @keyframes sushi{
+            0%{-webkit-transform: translateY(0px);}
+            50%{-webkit-transform: translateY(-15px);}
+            100%{-webkit-transform: translateY(0px);;}
+        }
 
 `;
 
@@ -80,12 +116,12 @@ class InstroduccionComponent extends Component {
     render(){
 
         return (
-            <InstroduccionStyles>
+            <InstroduccionStyles animation={this.state.animation}>
                 <img src={ QueVamosHacer } alt='' className='titulo_vamos' />
                 <div className='contenedorImg'>
                     <div className='contentIntroduccion'>
                         <img src={ Palillo } className='palilloIzquierdo'/>
-                        <img src={ trozoSushi }/>
+                        <img src={ trozoSushi } className='trozoSushi'/>
                         <img src={ Palillo } className='palilloDerecho'/>
                     </div>
     
@@ -101,7 +137,8 @@ class InstroduccionComponent extends Component {
                     <p className='Texto-1'>
                     Te deseamos suerte en este camino de sabiduría culinaria.
                     </p>
-                    <boton className='boton'>Siguiente</boton>
+                    <boton onClick={()=> this.props.clickHandler('Ingredientes')}>Siguiente</boton>
+                    
                 </div>
     
                 </div>

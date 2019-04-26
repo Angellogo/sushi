@@ -35,9 +35,9 @@ class App extends Component {
               <BienvenidoComponent clickHandler={this.changeSection}/> : null}
 
             { this.state.activePage === 'Introduccion' ? 
-            <IntroduccionComponent/> : null }
+            <IntroduccionComponent clickHandler={this.changeSection}/> : null }
 
-            { this.state.activePage === 'ingredientes' ? <IngredientesComponent/>: null }
+            { this.state.activePage === 'Ingredientes' ? <IngredientesComponent/>: null }
           
          </div>
       </Fragment> 
